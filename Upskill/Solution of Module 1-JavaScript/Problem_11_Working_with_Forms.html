@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Working with Forms</title>
+</head>
+<body>
+    <h2>Event Sign-up Form</h2>
+    <form id="signUpForm">
+        <label>Name: <input type="text" name="userName"></label><br><br>
+        <label>Email: <input type="email" name="userEmail"></label><br><br>
+        <button type="submit">Submit</button>
+    </form>
+    <div id="errorDisplay" style="color: red;"></div>
+
+    <script>
+        const form = document.getElementById('signUpForm');
+        form.onsubmit = function(event) {
+            // Prevent default form behavior
+            event.preventDefault();
+
+            // Capture inputs using form.elements
+            const name = form.elements['userName'].value;
+            const email = form.elements['userEmail'].value;
+            const errorDisplay = document.getElementById('errorDisplay');
+
+            // Validate inputs
+            if (name.trim() === "" || email.trim() === "") {
+                errorDisplay.textContent = "Error: All fields are required!";
+            } else {
+                errorDisplay.textContent = "";
+                alert(`Sign up successful for: ${name} (${email})`);
+            }
+        };
+    </script>
+</body>
+</html>

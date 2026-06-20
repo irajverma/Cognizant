@@ -1,0 +1,32 @@
+/* Header styles */
+header {
+    background-color: #333;
+    padding: 10px;
+    text-align: center;
+}
+
+header nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+}
+
+header nav a:hover {
+    color: #ffd700;
+}
+
+/* Main content styles */
+main {
+    padding: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Footer styles */
+footer {
+    background-color: #222;
+    color: #888;
+    text-align: center;
+    padding: 15px;
+    margin-top: 30px;
+}

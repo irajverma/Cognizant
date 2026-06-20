@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debugging with Chrome DevTools</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+            background-color: #f3f4f6;
+        }
+        .container {
+            max-width: 600px;
+            background: #fff;
+            padding: 25px;
+            margin: 0 auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .interactive-section {
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+            margin-top: 20px;
+        }
+        .instructions {
+            background-color: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 15px;
+            margin-top: 20px;
+        }
+        button {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Debugging Practice with Chrome DevTools</h2>
+        <p>This page is designed to help you practice using Chrome DevTools (Inspect, Console, and Sources panel for Breakpoints).</p>
+        
+        <div class="instructions">
+            <h4>Instructions:</h4>
+            <ol>
+                <li>Right-click anywhere and select <strong>Inspect</strong> to open DevTools.</li>
+                <li>Go to the <strong>Console</strong> tab to view output logs from our script.</li>
+                <li>Go to the <strong>Sources</strong> tab, open this HTML file, find the <code>calculateTotal()</code> function, and click on the line number inside it to set a breakpoint.</li>
+                <li>Click the "Calculate Registration Cost" button to trigger the breakpoint and watch the variable values change.</li>
+            </ol>
+        </div>
+
+        <div class="interactive-section">
+            <h3>Event Registration Calculator</h3>
+            <p>Registration Fee: $50</p>
+            <label for="ticketCount">Number of Attendees:</label>
+            <input type="number" id="ticketCount" value="3" style="width: 60px; padding: 5px; margin-right: 10px;">
+            <button onclick="calculateTotal()">Calculate Registration Cost</button>
+            <p id="totalDisplay" style="margin-top: 15px; font-weight: bold; font-size: 1.1em; color: #0056b3;"></p>
+        </div>
+    </div>
+
+    <script>
+        // Log setup messages to console on load
+        console.log("Welcome to the Debugging Exercise!");
+        console.warn("DevTools inspection is highly recommended for this page.");
+
+        function calculateTotal() {
+            var baseFee = 50;
+            var ticketInput = document.getElementById('ticketCount').value;
+            
+            // Log raw input values
+            console.log("Raw ticketCount value from input:", ticketInput);
+            
+            // INTENTIONAL MISTAKE / BUG FOR DEBUGGING:
+            // Input values are strings, so using + causes concatenation instead of addition.
+            // Let's demonstrate standard calculation steps.
+            var count = parseInt(ticketInput);
+            
+            console.log("Parsed attendee count:", count);
+            
+            var serviceTax = 5; // Flat tax
+            
+            // Set a breakpoint on the line below to watch baseFee, count, and serviceTax variables:
+            var totalCost = (baseFee * count) + serviceTax;
+            
+            console.log("Calculation steps: (" + baseFee + " * " + count + ") + " + serviceTax + " = " + totalCost);
+            
+            document.getElementById('totalDisplay').textContent = "Total Cost: $" + totalCost;
+        }
+    </script>
+</body>
+</html>

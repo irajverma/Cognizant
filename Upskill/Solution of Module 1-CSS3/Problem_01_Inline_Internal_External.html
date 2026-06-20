@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inline vs. Internal vs. External CSS</title>
+    <!-- Internal CSS (Embedded style tag in head to define body background) -->
+    <style>
+        body {
+            background-color: #f0f4f8;
+            margin: 0;
+            color: #333;
+        }
+    </style>
+    <!-- Link to External Stylesheet -->
+    <link rel="stylesheet" href="Problem_01_styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Events</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Inline style to make heading red -->
+        <h1 style="color: #d9534f;">Local Community Event Portal</h1>
+        <p>This page demonstrates three methods of applying styles: Inline (red heading), Internal (body background color), and External (header/footer/nav styles).</p>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Local City Council</p>
+    </footer>
+</body>
+</html>

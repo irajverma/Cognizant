@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table Styling</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f4f6;
+            padding: 40px 20px;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        h2 {
+            text-align: center;
+            color: #1e3a8a;
+            margin-bottom: 25px;
+        }
+
+        /* --- Table Styling --- */
+        table {
+            width: 100%;
+            /* Border Collapse */
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        /* Table headers, table data styling */
+        th, td {
+            border: 1px solid #d1d5db; /* Border styling */
+            padding: 12px 15px;       /* Padding */
+            text-align: center;       /* Text Align Center */
+        }
+
+        /* Header background color and text */
+        th {
+            background-color: #1e3a8a;
+            color: white;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.9em;
+            letter-spacing: 0.5px;
+        }
+
+        /* Zebra Striping using nth-child(even) */
+        tr:nth-child(even) {
+            background-color: #f3f4f6;
+        }
+
+        /* Hover effect for rows */
+        tr:hover {
+            background-color: #e5e7eb;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Community Events Registration Board</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Event ID</th>
+                    <th>Event Title</th>
+                    <th>Organizer</th>
+                    <th>City</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>001</td>
+                    <td>Tech Innovators Meetup</td>
+                    <td>Dr. Tech</td>
+                    <td>New York</td>
+                    <td>2025-06-10</td>
+                </tr>
+                <tr>
+                    <td>002</td>
+                    <td>AI &amp; ML Conference</td>
+                    <td>Charlie Lee</td>
+                    <td>Chicago</td>
+                    <td>2025-05-15</td>
+                </tr>
+                <tr>
+                    <td>003</td>
+                    <td>Frontend Dev Bootcamp</td>
+                    <td>Alice Johnson</td>
+                    <td>Los Angeles</td>
+                    <td>2025-07-01</td>
+                </tr>
+                <tr>
+                    <td>004</td>
+                    <td>Local Food &amp; Craft Market</td>
+                    <td>City Council</td>
+                    <td>San Francisco</td>
+                    <td>2025-08-20</td>
+                </tr>
+                <tr>
+                    <td>005</td>
+                    <td>Annual Sports Meet</td>
+                    <td>Athletic Club</td>
+                    <td>Boston</td>
+                    <td>2025-09-05</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

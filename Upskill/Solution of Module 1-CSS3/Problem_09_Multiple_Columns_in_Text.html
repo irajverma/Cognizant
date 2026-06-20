@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiple Columns in Text</title>
+    <style>
+        body {
+            font-family: Georgia, serif;
+            background-color: #faf8f5;
+            color: #2b2b2b;
+            padding: 40px 20px;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .newspaper-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 40px;
+            border: 1px solid #dcdad5;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+
+        header {
+            text-align: center;
+            border-bottom: 2px double #2b2b2b;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-size: 2.8em;
+            margin: 0;
+            font-family: 'Times New Roman', Times, serif;
+            letter-spacing: -1px;
+            text-transform: uppercase;
+        }
+
+        header .subtitle {
+            font-style: italic;
+            color: #666;
+            margin-top: 5px;
+            font-size: 1.1em;
+        }
+
+        /* --- CSS3 Multi-Column Layout --- */
+        .news-article {
+            column-count: 2;
+            column-gap: 30px;
+            column-rule: 1px solid gray;
+            text-align: justify;
+        }
+
+        .news-article p {
+            margin-top: 0;
+            margin-bottom: 15px;
+            text-indent: 20px;
+        }
+
+        .news-article p:first-of-type {
+            text-indent: 0;
+        }
+
+        .news-article p:first-of-type::first-letter {
+            font-size: 3em;
+            float: left;
+            line-height: 1;
+            padding-right: 8px;
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="newspaper-container">
+        <header>
+            <h1>The Community Bulletin</h1>
+            <div class="subtitle">Vol. XCVII - Issue 42 - Wednesday, June 17, 2026</div>
+        </header>
+
+        <section class="news-article">
+            <p>
+                Local residents gathered yesterday evening at the community hall to discuss the details of the upcoming Summer Harmony Concert. Organized by the city council, the planning committee outlined a major expansion of the event ground to accommodate a record-setting crowd expected this season. Additional food trucks, local beverage stalls, and artisan display booths will surround the main stage.
+            </p>
+            <p>
+                Security coordinators assured the public that adequate health and safety procedures will be in place. Emergency vehicles will have dedicated pathways, and parking facilities will be doubled. Volunteers from local high schools have already pledged their time to handle cleanup and visitor guides, reflecting the strong community spirit.
+            </p>
+            <p>
+                Mayor Alice Johnson expressed her gratitude towards all organizing committees. "It is through the dedicated work of our citizens that such events remain successful year after year," she remarked. Registrations remain open online, and attendees are encouraged to secure tickets early to avoid missing out on the limited seats.
+            </p>
+        </section>
+    </div>
+</body>
+</html>

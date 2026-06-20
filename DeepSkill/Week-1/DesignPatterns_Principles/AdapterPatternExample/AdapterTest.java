@@ -1,0 +1,17 @@
+public class AdapterTest {
+    public static void main(String[] args) {
+        System.out.println("=== Exercise 4: Adapter Pattern ===");
+
+        // Using PayPal via Adapter
+        PayPalGateway payPalGateway = new PayPalGateway();
+        PaymentProcessor payPalProcessor = new PayPalAdapter(payPalGateway);
+        payPalProcessor.processPayment(150.00);
+
+        System.out.println();
+
+        // Using Stripe via Adapter
+        StripeGateway stripeGateway = new StripeGateway();
+        PaymentProcessor stripeProcessor = new StripeAdapter(stripeGateway);
+        stripeProcessor.processPayment(240.50);
+    }
+}

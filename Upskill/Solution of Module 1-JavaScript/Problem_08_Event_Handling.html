@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Event Handling</title>
+</head>
+<body>
+    <h2>Interactive Filters &amp; Actions</h2>
+    
+    <button id="registerBtn">Register</button>
+    <br><br>
+
+    <select id="categoryFilter">
+        <option value="all">All</option>
+        <option value="music">Music</option>
+        <option value="art">Art</option>
+    </select>
+    <br><br>
+
+    <input type="text" id="searchInput" placeholder="Search by name...">
+
+    <script>
+        // Use onclick for Register buttons
+        document.getElementById('registerBtn').onclick = function() {
+            alert("Registered successfully!");
+        };
+
+        // Use onchange to filter events by category
+        document.getElementById('categoryFilter').onchange = function(e) {
+            console.log("Selected category filter:", e.target.value);
+        };
+
+        // Use keydown to allow quick search by name
+        document.getElementById('searchInput').onkeydown = function(e) {
+            console.log("Quick Search keyboard input:", e.key, "Current text:", e.target.value);
+        };
+    </script>
+</body>
+</html>

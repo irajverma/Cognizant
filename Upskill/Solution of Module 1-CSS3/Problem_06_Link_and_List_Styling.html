@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Link and List Styling</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f4f6;
+            margin: 0;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        h2 {
+            color: #1e3a8a;
+            border-bottom: 2px solid #e5e7eb;
+            padding-bottom: 10px;
+            margin-top: 30px;
+        }
+
+        /* --- Link Styling with Pseudo-classes --- */
+        /* Unvisited link */
+        .custom-link:link {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.2s;
+        }
+        /* Visited link */
+        .custom-link:visited {
+            color: #7c3aed;
+        }
+        /* Hover link */
+        .custom-link:hover {
+            color: #1d4ed8;
+            text-decoration: underline;
+        }
+        /* Active link */
+        .custom-link:active {
+            color: #ef4444;
+        }
+
+        /* --- Nav Menu List Styling (Remove bullets) --- */
+        .nav-menu {
+            list-style-type: none; /* Remove bullets */
+            padding: 0;
+            margin: 0;
+            display: flex;
+            background-color: #1e3a8a;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .nav-menu li {
+            /* No margin/padding on list items since nav spacing is on links */
+        }
+
+        .nav-menu a {
+            display: block;
+            color: white;
+            padding: 15px 20px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .nav-menu a:hover {
+            background-color: #3b82f6;
+        }
+
+        /* --- Customized Bullet Lists --- */
+        .styled-list {
+            /* Custom bullet style (square) and inside alignment */
+            list-style-type: square;
+            list-style-position: inside;
+            padding-left: 10px;
+        }
+
+        .styled-list li {
+            /* Padding and margin on list items for spacing */
+            margin-bottom: 10px;
+            padding: 8px;
+            background-color: #f9fafb;
+            border-radius: 4px;
+            border-left: 3px solid #10b981;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Link and List Customization</h1>
+
+        <h2>Navigation Menu (List with bullets removed)</h2>
+        <ul class="nav-menu">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#events">Events</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <h2>Event Details (Styled List with Spacing)</h2>
+        <ul class="styled-list">
+            <li>Event starts at 10:00 AM sharp</li>
+            <li>Registration desk opens 30 minutes prior</li>
+            <li>Lunch and refreshments will be provided</li>
+            <li>Complimentary parking available at the rear</li>
+        </ul>
+
+        <h2>Hyperlinks (Pseudo-class Demonstration)</h2>
+        <p>
+            Please check the <a href="http://example.com/visited" class="custom-link">Official Guidelines Link</a> to read policies. 
+            (Click the link to see active state, and visit to see the visited purple styling).
+        </p>
+    </div>
+</body>
+</html>

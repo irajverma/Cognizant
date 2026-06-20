@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug and Test with Dev Tools</title>
+    <!-- External CSS link to test loading in Network tab -->
+    <link rel="stylesheet" href="Problem_01_styles.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 30px;
+            background-color: #f8fafc;
+            color: #334155;
+        }
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        h2 {
+            color: #1e3a8a;
+            margin-top: 0;
+        }
+        .instructions {
+            background-color: #f0fdf4;
+            border-left: 5px solid #22c55e;
+            padding: 20px;
+            border-radius: 4px;
+            margin-top: 25px;
+        }
+        .instructions h4 {
+            margin-top: 0;
+            color: #15803d;
+            font-size: 1.1em;
+        }
+        .instructions ul {
+            padding-left: 20px;
+            margin-bottom: 0;
+        }
+        .instructions li {
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+        .box-demo {
+            background-color: #3b82f6;
+            color: white;
+            padding: 20px;
+            border-radius: 6px;
+            text-align: center;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>DevTools Testing and Debugging Practice</h2>
+        <p>This page links an external stylesheet (<code>Problem_01_styles.css</code>) and sets up a mock layout box for styling experiments.</p>
+        
+        <div class="box-demo">
+            Inspect Me and Change My Styles!
+        </div>
+
+        <div class="instructions">
+            <h4>How to Complete the Exercise Tasks:</h4>
+            <ul>
+                <li>
+                    <strong>Task 1: Simulate Different Screen Sizes</strong>
+                    <br>Press <code>F12</code> or right-click &rarr; <em>Inspect</em>. Click the <strong>Toggle Device Toolbar</strong> icon (smartphone/tablet icon in top-left of DevTools) to simulate various screen widths (e.g., iPhone, iPad, Desktop).
+                </li>
+                <li>
+                    <strong>Task 2: Inspect and Test Styles Live</strong>
+                    <br>Select the pointer tool in DevTools, click on the blue box above (<code>.box-demo</code>). In the <strong>Styles</strong> panel on the right, change <code>background-color</code> to another color (like <code>#ef4444</code>) or add <code>transform: rotate(5deg)</code> to see changes instantly.
+                </li>
+                <li>
+                    <strong>Task 3: Check External CSS Loading</strong>
+                    <br>Go to the <strong>Network</strong> tab in DevTools. Reload the page (<code>Cmd + R</code> or <code>Ctrl + R</code>). Look for <code>Problem_01_styles.css</code> in the list of loaded assets to confirm it loaded with a <code>200 OK</code> status.
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

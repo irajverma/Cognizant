@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saving User Preferences</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f3f4f6;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .pref-container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            max-width: 450px;
+            width: 100%;
+        }
+        h2 {
+            margin-top: 0;
+            color: #111827;
+            text-align: center;
+        }
+        .form-group {
+            margin: 20px 0;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #374151;
+        }
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+            font-size: 16px;
+            background-color: #f9fafb;
+        }
+        select:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+        }
+        .btn-group {
+            display: flex;
+            gap: 10px;
+        }
+        button {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .btn-save {
+            background-color: #10b981;
+            color: white;
+        }
+        .btn-save:hover {
+            background-color: #059669;
+        }
+        .btn-clear {
+            background-color: #ef4444;
+            color: white;
+        }
+        .btn-clear:hover {
+            background-color: #dc2626;
+        }
+        .status-log {
+            margin-top: 15px;
+            font-size: 0.9em;
+            text-align: center;
+            color: #6b7280;
+        }
+    </style>
+</head>
+<body>
+    <div class="pref-container">
+        <h2>User Event Preferences</h2>
+        <p>Your selection will be saved automatically to <code>localStorage</code> and <code>sessionStorage</code>. Try reloading the page to verify that the selection persists.</p>
+        
+        <div class="form-group">
+            <label for="eventPref">Choose Preferred Event Category:</label>
+            <select id="eventPref" onchange="savePreferences()">
+                <option value="" disabled selected>-- Select Preference --</option>
+                <option value="art-music">Art &amp; Music</option>
+                <option value="food-craft">Food &amp; Craft Market</option>
+                <option value="sports-fitness">Sports &amp; Fitness</option>
+                <option value="seminars">Educational Seminars</option>
+            </select>
+        </div>
+
+        <div class="btn-group">
+            <button class="btn-clear" onclick="clearPreferences()">Clear Preferences</button>
+        </div>
+
+        <div id="statusMessage" class="status-log">No saved preference found.</div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            loadPreferences();
+        });
+
+        function savePreferences() {
+            var selectedVal = document.getElementById('eventPref').value;
+            
+            // Save to localStorage
+            localStorage.setItem('preferredEvent', selectedVal);
+            
+            // Save to sessionStorage
+            sessionStorage.setItem('sessionEvent', selectedVal);
+            
+            updateStatus('Preference saved: "' + selectedVal + '" (saved in both local &amp; session storage)');
+        }
+
+        function loadPreferences() {
+            var savedPref = localStorage.getItem('preferredEvent');
+            if (savedPref) {
+                document.getElementById('eventPref').value = savedPref;
+                updateStatus('Loaded preference from localStorage: "' + savedPref + '"');
+            } else {
+                updateStatus('No saved preferences found in storage.');
+            }
+        }
+
+        function clearPreferences() {
+            localStorage.removeItem('preferredEvent');
+            sessionStorage.removeItem('sessionEvent');
+            document.getElementById('eventPref').selectedIndex = 0; // Reset select
+            updateStatus('Cleared both localStorage and sessionStorage!');
+        }
+
+        function updateStatus(msg) {
+            document.getElementById('statusMessage').innerHTML = msg;
+        }
+    </script>
+</body>
+</html>

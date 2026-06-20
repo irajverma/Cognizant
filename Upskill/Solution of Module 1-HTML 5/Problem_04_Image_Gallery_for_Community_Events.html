@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery for Community Events</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 15px;
+            margin-top: 20px;
+        }
+        td {
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+            vertical-align: top;
+            width: 33.33%;
+        }
+        .gallery-img {
+            width: 100%;
+            height: auto;
+            max-height: 200px;
+            object-fit: cover;
+            border: 3px solid #0056b3;
+            border-radius: 4px;
+            transition: transform 0.2s;
+        }
+        .gallery-img:hover {
+            transform: scale(1.05);
+        }
+        .caption {
+            margin-top: 10px;
+            font-size: 0.95em;
+            color: #555;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Community Events Gallery</h1>
+    <table>
+        <tr>
+            <td>
+                <img src="community_event.png" alt="Annual Food Festival" title="Food trucks and local delicacies" class="gallery-img">
+                <div class="caption">Annual Food Festival - Gathering of food trucks and local cuisines.</div>
+            </td>
+            <td>
+                <img src="community_event.png" alt="Music Concert" title="Live music on the main stage" class="gallery-img">
+                <div class="caption">Summer Harmony Concert - Live performances by local bands.</div>
+            </td>
+            <td>
+                <img src="community_event.png" alt="Art Exhibition" title="Artworks by community members" class="gallery-img">
+                <div class="caption">Community Art Exhibition - Showcasing local creativity.</div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <img src="community_event.png" alt="Craft Market" title="Handmade crafts and goods" class="gallery-img">
+                <div class="caption">Handmade Crafts Market - Supporting local independent artists.</div>
+            </td>
+            <td>
+                <img src="community_event.png" alt="Kids Fun Day" title="Activities and games for children" class="gallery-img">
+                <div class="caption">Kids &amp; Family Fun Day - Fun outdoor games and face painting.</div>
+            </td>
+            <td>
+                <img src="community_event.png" alt="Sports Day" title="Friendly sports tournaments" class="gallery-img">
+                <div class="caption">Community Sports Day - Fun football and athletic activities.</div>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

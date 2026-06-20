@@ -1,0 +1,42 @@
+/* ==========================================
+   STYLES FOR CALL-TO-ACTION (CTA) BUTTONS
+   ========================================== */
+
+/* Style for main CTA button - uses blue background and bold text */
+.cta-button {
+    background-color: #007BFF;
+    color: white;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    display: inline-block;
+    text-align: center;
+}
+
+/* Hover state for main CTA button - darkens the background */
+.cta-button:hover {
+    background-color: #0056b3;
+}
+
+/* Style for secondary outline button */
+.btn-secondary {
+    background-color: transparent;
+    color: #6c757d;
+    border: 2px solid #6c757d;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: inline-block;
+}
+
+/* Hover state for secondary button - fills the button with color */
+.btn-secondary:hover {
+    background-color: #6c757d;
+    color: white;
+}

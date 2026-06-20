@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Web Design with Media Queries</title>
+    <style>
+        /* Base / Desktop Layout styling using CSS Grid & Flexbox */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f3f4f6;
+            color: #333;
+        }
+
+        header {
+            background-color: #1e3a8a;
+            color: white;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.8vw; /* Flexible layout size */
+        }
+
+        /* Desktop Nav bar: Horizontally positioned links */
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .main-container {
+            max-width: 90%;
+            margin: 30px auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+            min-height: 50vh; /* Flexible height */
+        }
+
+        .content-area {
+            background-color: #ffffff;
+            padding: 3%;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .sidebar {
+            background-color: #ffffff;
+            padding: 5%;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .banner-img {
+            width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin-bottom: 20px;
+        }
+
+        /* --- RESPONSIVE MEDIA QUERY: Screens smaller than 768px --- */
+        @media (max-width: 767px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+                padding: 20px;
+            }
+
+            header h1 {
+                font-size: 1.8rem; /* Scale up slightly on mobile for clarity */
+                margin-bottom: 15px;
+            }
+
+            /* Stack navigation links vertically instead of horizontally */
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+                width: 100%;
+            }
+
+            nav ul li {
+                width: 100%;
+                background-color: rgba(255,255,255,0.1);
+                border-radius: 4px;
+            }
+
+            nav a {
+                display: block;
+                padding: 10px;
+                font-size: 1rem;
+            }
+
+            /* Stack main grid columns into a single column on mobile */
+            .main-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                margin: 15px auto;
+            }
+
+            .content-area, .sidebar {
+                padding: 20px;
+            }
+
+            /* Reduce image sizes on mobile */
+            .banner-img {
+                width: 80%;
+                display: block;
+                margin: 0 auto 20px auto;
+            }
+
+            /* Reduce font sizes inside articles */
+            .content-area p, .sidebar p {
+                font-size: 0.95rem;
+                line-height: 1.5;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Event Portal</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#events">Events</a></li>
+                <li><a href="#register">Register</a></li>
+                <li><a href="#about">About Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="main-container">
+        <div class="content-area">
+            <h2>Annual Music Festival Invitation</h2>
+            <img class="banner-img" src="community_event.png" alt="Music Festival Banner">
+            <p>
+                Welcome to the city council event registration platform. The Summer Harmony Concert is scheduled to host over twenty-five local bands. Join us for a weekend of celebration and music.
+            </p>
+        </div>
+
+        <div class="sidebar">
+            <h3>Event Info</h3>
+            <p><strong>Location:</strong> City Main Park</p>
+            <p><strong>Date:</strong> July 15, 2026</p>
+            <p><strong>Tickets:</strong> Free registration</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Registration Form</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .form-container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        h2 {
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: #333;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #444;
+        }
+        .form-group input, 
+        .form-group select, 
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        .form-group input:focus, 
+        .form-group select:focus, 
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #0056b3;
+            box-shadow: 0 0 5px rgba(0, 86, 179, 0.25);
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #0056b3;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        button:hover {
+            background-color: #004085;
+        }
+        output {
+            display: block;
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            border-radius: 4px;
+            text-align: center;
+            font-weight: 600;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Register for an Event</h2>
+        <form id="registrationForm" onsubmit="event.preventDefault(); handleRegistrationSubmit();">
+            <div class="form-group">
+                <label for="fullName">Full Name</label>
+                <input type="text" id="fullName" placeholder="Enter your full name" required autofocus>
+            </div>
+            
+            <div class="form-group">
+                <label for="emailAddress">Email Address</label>
+                <input type="email" id="emailAddress" placeholder="name@example.com" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="eventDate">Preferred Event Date</label>
+                <input type="date" id="eventDate" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="eventType">Event Type</label>
+                <select id="eventType" required>
+                    <option value="" disabled selected style="display:none;">Select an event type</option>
+                    <option value="Art &amp; Music">Art &amp; Music Festival</option>
+                    <option value="Food &amp; Craft">Food &amp; Craft Market</option>
+                    <option value="Sports &amp; Fitness">Sports &amp; Fitness Day</option>
+                    <option value="Educational Seminars">Educational Seminars</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="additionalMessage">Special Requirements / Message</label>
+                <textarea id="additionalMessage" rows="4" placeholder="Enter any questions or requirements..."></textarea>
+            </div>
+            
+            <button type="submit">Submit Registration</button>
+            
+            <output id="confirmationMessage"></output>
+        </form>
+    </div>
+
+    <script>
+        function handleRegistrationSubmit() {
+            var name = document.getElementById('fullName').value;
+            var eventType = document.getElementById('eventType').value;
+            var outputEl = document.getElementById('confirmationMessage');
+            
+            outputEl.style.display = 'block';
+            outputEl.textContent = 'Thank you, ' + name + '! Your registration for the ' + eventType + ' has been successfully submitted.';
+        }
+    </script>
+</body>
+</html>

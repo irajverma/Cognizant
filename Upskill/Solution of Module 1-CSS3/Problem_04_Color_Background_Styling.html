@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color &amp; Background Styling</title>
+    <style>
+        body {
+            /* Background image with fallback color (#e2e8f0) */
+            background-color: #e2e8f0;
+            background-image: url('community_event.png');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            
+            /* Apply color overlay for readability using background-blend-mode */
+            background-blend-mode: overlay;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        .card {
+            /* HEX code for border, RGBA for translucent white background */
+            background-color: rgba(255, 255, 255, 0.9);
+            border: 1px solid #cbd5e1;
+            max-width: 600px;
+            margin: 0 auto;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+        }
+
+        /* Gradient applied to the header banner using linear-gradient */
+        .card-header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            color: #ffffff; /* HEX white */
+            padding: 25px;
+            text-align: center;
+        }
+
+        .card-header h2 {
+            margin: 0;
+            font-size: 1.8em;
+        }
+
+        .card-body {
+            padding: 30px;
+        }
+
+        .highlight-box {
+            /* RGBA background color for transparent red accent */
+            background-color: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid #ef4444; /* HEX red */
+            color: #b91c1c; /* HEX dark red */
+            padding: 15px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .text-dark {
+            /* HEX for dark grey text */
+            color: #1e293b;
+        }
+
+        .text-muted {
+            /* RGBA for soft text */
+            color: rgba(30, 41, 59, 0.6);
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="card-header">
+            <h2>Color &amp; Background Styling</h2>
+        </div>
+        <div class="card-body">
+            <div class="highlight-box">
+                Special Notification: Explore vibrant layouts and colors!
+            </div>
+            <p class="text-dark">
+                This page utilizes <strong>HEX colors</strong> (e.g. <code>#1e3a8a</code>) and <strong>RGBA colors</strong> (e.g. <code>rgba(255, 255, 255, 0.9)</code>) for backgrounds and text.
+            </p>
+            <p class="text-dark">
+                The body contains a background image (<code>community_event.png</code>) with a soft overlay. The card header uses a <strong>linear gradient</strong> to blend from deep blue to bright blue.
+            </p>
+            <p class="text-muted">
+                Last updated: June 2026.
+            </p>
+        </div>
+    </div>
+</body>
+</html>

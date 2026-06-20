@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM Manipulation</title>
+    <style>
+        .card { border: 1px solid #ccc; padding: 15px; margin: 10px; border-radius: 4px; display: inline-block; width: 200px; }
+        .registered { background-color: #d1e7dd; }
+    </style>
+</head>
+<body>
+    <h2>Community Events Board</h2>
+    <div id="gallery"></div>
+
+    <script>
+        const events = [
+            { id: 1, title: "Summer Concert", registered: false },
+            { id: 2, title: "Art Expo", registered: false }
+        ];
+
+        // Access DOM using querySelector
+        const gallery = document.querySelector("#gallery");
+
+        function render() {
+            gallery.innerHTML = "";
+            events.forEach(evt => {
+                // Create card container
+                const card = document.createElement("div");
+                card.className = "card" + (evt.registered ? " registered" : "");
+                
+                const title = document.createElement("h4");
+                title.textContent = evt.title;
+                card.appendChild(title);
+
+                const btn = document.createElement("button");
+                btn.textContent = evt.registered ? "Cancel" : "Register";
+                btn.onclick = () => {
+                    // Update UI status
+                    evt.registered = !evt.registered;
+                    render();
+                };
+                card.appendChild(btn);
+                
+                gallery.appendChild(card);
+            });
+        }
+
+        render();
+    </script>
+</body>
+</html>

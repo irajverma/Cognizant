@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typography: Fonts and Text</title>
+    <!-- Include Google Fonts: Inter (regular, italic, bold) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafb;
+            color: #111827;
+            padding: 40px 20px;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        /* Set font properties */
+        h1 {
+            font-size: 2.2em;
+            font-weight: 700;
+            text-align: center;
+            color: #1f2937;
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+        }
+
+        h2 {
+            font-size: 1.4em;
+            font-weight: 700;
+            color: #3b82f6;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            /* Text transform: Uppercase */
+            text-transform: uppercase;
+            /* Letter spacing */
+            letter-spacing: 1.5px;
+        }
+
+        .intro {
+            /* Font size, style */
+            font-size: 1.15em;
+            font-style: italic;
+            color: #4b5563;
+            text-align: center;
+            margin-bottom: 30px;
+            /* Line height */
+            line-height: 1.6;
+        }
+
+        .description {
+            /* text-align: justify, letter-spacing, line-height */
+            text-align: justify;
+            letter-spacing: 0.2px;
+            line-height: 1.8;
+            font-size: 1em;
+            color: #374151;
+            margin-bottom: 20px;
+        }
+
+        .quote {
+            background-color: #f3f4f6;
+            border-left: 4px solid #9ca3af;
+            padding: 15px;
+            margin: 20px 0;
+            font-style: italic;
+            color: #4b5563;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Typography Showcase</h1>
+        <p class="intro">
+            "A demonstration of typography customization using Google Fonts."
+        </p>
+
+        <h2>Section 1: Event Description</h2>
+        <p class="description">
+            This paragraph is formatted with standard justifications to display the layout cleanly. We have set a custom line height of 1.8 to ensure optimal readability, and expanded the letter spacing slightly. The font family used throughout the document is Google's Inter, which offers a clean, modern aesthetic.
+        </p>
+
+        <p class="quote">
+            "Typography is the craft of endowing a human language with a durable visual form." &mdash; Robert Bringhurst
+        </p>
+
+        <h2>Section 2: Key Details</h2>
+        <p class="description">
+            Headings are transformed to uppercase with additional letter spacing to distinguish structural sections. The introduction paragraph features italicized styling to differentiate context.
+        </p>
+    </div>
+</body>
+</html>

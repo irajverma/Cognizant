@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selectors Playground</title>
+    <style>
+        /* 1. Universal Selector: Reset margin and padding for all elements */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f4f6;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* 2. ID Selector: Styling the main header banner */
+        #mainHeader {
+            background-color: #1e3a8a;
+            color: #ffffff;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        /* 3. Element Selector: Style all <h2> headings */
+        h2 {
+            color: #1e3a8a;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 2px solid #3b82f6;
+            padding-bottom: 5px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        /* 4. Class Selector: Styling event containers (.eventCard) */
+        .eventCard {
+            background-color: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        /* 5. Grouping Selector: Styling both h3 and p elements together */
+        h3, p {
+            color: #4b5563;
+            font-size: 1.05em;
+        }
+        
+        h3 {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header id="mainHeader">
+        <h1>Community Events Selector Playground</h1>
+        <p style="color: #93c5fd;">Demonstrating Universal, Element, ID, Class, and Grouping selectors</p>
+    </header>
+
+    <div class="container">
+        <h2>Upcoming Schedule</h2>
+        
+        <div class="eventCard">
+            <h3>1. Interactive Art Workshop</h3>
+            <p>Unleash your creativity with help from experienced local artists. Materials provided.</p>
+        </div>
+
+        <div class="eventCard">
+            <h3>2. Tech Innovations Summit</h3>
+            <p>Explore the future of tech and networking opportunities with tech leaders in the community.</p>
+        </div>
+    </div>
+</body>
+</html>

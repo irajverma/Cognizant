@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Invite with Media Events</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+            background-color: #f7f9fa;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            background: #fff;
+            padding: 25px;
+            margin: 0 auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .video-box {
+            text-align: center;
+            margin-top: 20px;
+        }
+        video {
+            width: 100%;
+            max-width: 500px;
+            border: 2px solid #333;
+            border-radius: 5px;
+        }
+        .status-msg {
+            background-color: #d1ecf1;
+            color: #0c5460;
+            padding: 10px;
+            border-radius: 4px;
+            margin-top: 10px;
+            display: inline-block;
+            font-weight: bold;
+        }
+        .input-form {
+            margin-top: 25px;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Special Event Promo Video Invite</h2>
+        <p>Watch the video below to learn more about the annual community gathering. Try to edit the text input below, then reload or close the tab to trigger the leave warning.</p>
+        
+        <div class="video-box">
+            <video id="promoVideo" controls oncanplay="handleCanPlay()">
+                <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <br>
+            <div id="videoStatus" class="status-msg">Loading video...</div>
+        </div>
+
+        <div class="input-form">
+            <h3>Quick Registration Form</h3>
+            <div class="form-group">
+                <label for="nameInput">Your Name (Start typing to prevent accidental tab closing):</label>
+                <input type="text" id="nameInput" placeholder="Type name here..." oninput="handleFormModified()">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var isFormModified = false;
+
+        function handleCanPlay() {
+            var statusEl = document.getElementById('videoStatus');
+            statusEl.textContent = "Video ready to play!";
+            statusEl.style.backgroundColor = "#d4edda";
+            statusEl.style.color = "#155724";
+        }
+
+        function handleFormModified() {
+            var inputVal = document.getElementById('nameInput').value;
+            isFormModified = (inputVal.trim().length > 0);
+        }
+
+        window.onbeforeunload = function(e) {
+            if (isFormModified) {
+                // Warning message for modern browsers (they display a standard generic message, but returning a string triggers it)
+                var message = "You have an unfinished form. Are you sure you want to leave?";
+                e.returnValue = message; 
+                return message;
+            }
+        };
+    </script>
+</body>
+</html>

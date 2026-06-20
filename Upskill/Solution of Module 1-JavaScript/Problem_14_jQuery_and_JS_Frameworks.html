@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery and JS Frameworks</title>
+    <!-- Include jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .event-card { width: 200px; padding: 20px; background-color: #e5e7eb; border-radius: 4px; margin-top: 15px; display: none; }
+    </style>
+</head>
+<body>
+    <h2>jQuery Animation &amp; Frameworks Comparison</h2>
+    <button id="registerBtn">Toggle Event Details</button>
+    
+    <div class="event-card">
+        <h4>Jazz Festival</h4>
+        <p>Location: Central Amphitheater</p>
+    </div>
+
+    <hr>
+    
+    <h3>Benefits of Modern Frameworks (React, Vue)</h3>
+    <ul>
+        <li><strong>Component-Based Architecture:</strong> Facilitates reusability and isolated testing of components.</li>
+        <li><strong>Declarative UI:</strong> State dictates UI updates automatically via Virtual DOM, eliminating manual DOM queries/manipulation.</li>
+        <li><strong>Performance:</strong> Virtual DOM differences updates only modified parts of the actual DOM.</li>
+    </ul>
+
+    <script>
+        $(document).ready(function() {
+            // Handle click events and animate fadeIn/fadeOut using jQuery
+            $('#registerBtn').click(function() {
+                $('.event-card').fadeToggle('slow');
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+Bootstrap Directory Structure Explanation:
+------------------------------------------
+When you download Bootstrap compiled files, you get the following folder structure:
+
+bootstrap/
+├── css/
+│   ├── bootstrap.css          (Compiled CSS, readable)
+│   ├── bootstrap.min.css      (Minified CSS, for production)
+│   ├── bootstrap.grid.css     (Grid-only system)
+│   └── ...
+└── js/
+    ├── bootstrap.bundle.js    (Compiled JS, includes Popper.js)
+    ├── bootstrap.bundle.min.js(Minified JS bundle, recommended)
+    ├── bootstrap.js           (Bootstrap JS without Popper.js)
+    └── ...
+
+Explanation of folders:
+- css/: Contains the core stylesheet files. bootstrap.min.css is the main production file.
+- js/: Contains JavaScript plugins for interactive components (modals, tooltips, collapse).
+- icons/: (If downloaded separately) Contains SVG-based Bootstrap Icons for responsive iconography.

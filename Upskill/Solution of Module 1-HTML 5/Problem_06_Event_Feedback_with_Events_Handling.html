@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Feedback with Event Handling</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+            background-color: #f7f9fa;
+        }
+        .container {
+            max-width: 600px;
+            background: #fff;
+            padding: 25px;
+            margin: 0 auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .error {
+            color: red;
+            font-size: 0.9em;
+            margin-top: 5px;
+            display: none;
+        }
+        .fee-display {
+            background-color: #e9ecef;
+            padding: 10px;
+            border-left: 5px solid #0056b3;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .char-counter {
+            text-align: right;
+            font-size: 0.85em;
+            color: #666;
+            margin-top: 5px;
+        }
+        .img-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .img-container img {
+            width: 200px;
+            cursor: zoom-in;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            transition: width 0.3s;
+        }
+        .img-container img.enlarged {
+            width: 400px;
+            cursor: zoom-out;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Submit Event Feedback</h2>
+        
+        <div class="img-container">
+            <p>Double-click the banner below to enlarge it:</p>
+            <img id="eventImage" src="community_event.png" alt="Community Event" ondblclick="toggleImageSize(this)">
+        </div>
+
+        <form id="feedbackForm" onsubmit="event.preventDefault();">
+            <div class="form-group">
+                <label for="phoneNumber">Phone Number (Validation on Blur)</label>
+                <input type="text" id="phoneNumber" placeholder="Enter 10-digit number" onblur="validatePhone()">
+                <div id="phoneError" class="error">Please enter a valid 10-digit phone number.</div>
+            </div>
+
+            <div class="form-group">
+                <label for="eventSelect">Select Event (Display fee on change)</label>
+                <select id="eventSelect" onchange="displayFee()">
+                    <option value="" disabled selected>-- Select Event --</option>
+                    <option value="art" data-fee="$15">Art &amp; Music Festival</option>
+                    <option value="food" data-fee="Free">Food &amp; Craft Market</option>
+                    <option value="sports" data-fee="$5">Sports &amp; Fitness Day</option>
+                </select>
+                <div id="feeDisplay" class="fee-display" style="display: none;">
+                    Event Fee: <span id="feeAmount"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="feedbackText">Feedback Comments (Character Counter)</label>
+                <textarea id="feedbackText" rows="4" placeholder="Enter comments here..." onkeyup="countChars()"></textarea>
+                <div class="char-counter"><span id="charCount">0</span> characters entered</div>
+            </div>
+
+            <button type="button" onclick="confirmSubmission()">Submit Feedback</button>
+        </form>
+    </div>
+
+    <script>
+        function toggleImageSize(img) {
+            img.classList.toggle('enlarged');
+        }
+
+        function validatePhone() {
+            var phone = document.getElementById('phoneNumber').value;
+            var errorDiv = document.getElementById('phoneError');
+            var phonePattern = /^\d{10}$/;
+            if (!phonePattern.test(phone) && phone !== '') {
+                errorDiv.style.display = 'block';
+            } else {
+                errorDiv.style.display = 'none';
+            }
+        }
+
+        function displayFee() {
+            var select = document.getElementById('eventSelect');
+            var selectedOption = select.options[select.selectedIndex];
+            var fee = selectedOption.getAttribute('data-fee');
+            
+            var feeDisplay = document.getElementById('feeDisplay');
+            var feeAmount = document.getElementById('feeAmount');
+            
+            if (fee) {
+                feeDisplay.style.display = 'block';
+                feeAmount.textContent = fee;
+            } else {
+                feeDisplay.style.display = 'none';
+            }
+        }
+
+        function countChars() {
+            var text = document.getElementById('feedbackText').value;
+            document.getElementById('charCount').textContent = text.length;
+        }
+
+        function confirmSubmission() {
+            var phone = document.getElementById('phoneNumber').value;
+            var eventVal = document.getElementById('eventSelect').value;
+            var feedback = document.getElementById('feedbackText').value;
+            
+            if (!/^\d{10}$/.test(phone)) {
+                alert('Please check your phone number validation first!');
+                return;
+            }
+            if (!eventVal) {
+                alert('Please select an event!');
+                return;
+            }
+            if (!feedback) {
+                alert('Please enter your feedback comments!');
+                return;
+            }
+
+            var confirmed = confirm('Are you sure you want to submit this feedback?');
+            if (confirmed) {
+                alert('Thank you! Your feedback has been recorded.');
+                document.getElementById('feedbackForm').reset();
+                document.getElementById('charCount').textContent = '0';
+                document.getElementById('feeDisplay').style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
