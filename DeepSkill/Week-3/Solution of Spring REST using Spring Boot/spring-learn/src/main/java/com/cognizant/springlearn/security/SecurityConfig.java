@@ -2,19 +2,20 @@ package com.cognizant.springlearn.security;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
+public class SecurityConfig {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(SecurityConfig.class);
 
@@ -23,14 +24,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
      * - admin/pwd with role ADMIN
      * - user/pwd with role USER
      */
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+    @Bean
+    public UserDetailsService userDetailsService() {
         LOGGER.info("START - Configuring authentication");
-        auth.inMemoryAuthentication()
-                .withUser("admin").password(passwordEncoder().encode("pwd")).roles("ADMIN")
-                .and()
-                .withUser("user").password(passwordEncoder().encode("pwd")).roles("USER");
+        InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
+        manager.createUser(User.withUsername("admin")
+                .password(passwordEncoder().encode("pwd"))
+                .roles("ADMIN")
+                .build());
+        manager.createUser(User.withUsername("user")
+                .password(passwordEncoder().encode("pwd"))
+                .roles("USER")
+                .build());
         LOGGER.info("END");
+        return manager;
     }
 
     @Bean
@@ -47,16 +54,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
      * - All other requests require authentication
      * - Add JWT authorization filter
      */
-    @Override
-    protected void configure(HttpSecurity httpSecurity) throws Exception {
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         LOGGER.info("START - Configuring HTTP security");
-        httpSecurity.csrf().disable().httpBasic().and()
-                .authorizeRequests()
-                //.antMatchers("/countries").hasRole("USER")
-                .antMatchers("/authenticate").hasAnyRole("USER", "ADMIN")
-                .anyRequest().authenticated()
-                .and()
-                .addFilter(new JwtAuthorizationFilter(authenticationManager()));
+        http.csrf(csrf -> csrf.disable())
+                .httpBasic(httpBasic -> {})
+                .authorizeHttpRequests(auth -> auth
+                        //.requestMatchers("/countries").hasRole("USER")
+                        .requestMatchers("/authenticate").hasAnyRole("USER", "ADMIN")
+                        .anyRequest().authenticated()
+                )
+                .addFilter(new JwtAuthorizationFilter(
+                        http.getSharedObject(org.springframework.security.authentication.AuthenticationManager.class)));
         LOGGER.info("END");
+        return http.build();
     }
 }

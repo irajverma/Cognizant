@@ -2,7 +2,7 @@ package com.cognizant.springlearn.controller;
 
 import java.util.List;
 
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,7 +34,7 @@ public class CountryController {
     }
 
     /**
-     * GET /country - Returns India country details.
+     * GET /countries/country - Returns India country details.
      */
     @GetMapping("/country")
     public Country getCountryIndia() {

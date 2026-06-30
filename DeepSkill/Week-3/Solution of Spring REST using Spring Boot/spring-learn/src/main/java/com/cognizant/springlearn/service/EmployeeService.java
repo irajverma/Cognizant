@@ -6,7 +6,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.cognizant.springlearn.dao.EmployeeDao;
 import com.cognizant.springlearn.model.Employee;
@@ -20,7 +19,6 @@ public class EmployeeService {
     @Autowired
     private EmployeeDao employeeDao;
 
-    @Transactional
     public List<Employee> getAllEmployees() {
         LOGGER.info("START");
         List<Employee> employees = employeeDao.getAllEmployees();
@@ -28,14 +26,12 @@ public class EmployeeService {
         return employees;
     }
 
-    @Transactional
     public void updateEmployee(Employee employee) throws EmployeeNotFoundException {
         LOGGER.info("START");
         employeeDao.updateEmployee(employee);
         LOGGER.info("END");
     }
 
-    @Transactional
     public void deleteEmployee(Integer id) throws EmployeeNotFoundException {
         LOGGER.info("START");
         employeeDao.deleteEmployee(id);

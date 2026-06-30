@@ -5,20 +5,24 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.crypto.SecretKey;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 
-import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.security.Keys;
 
 @RestController
 public class AuthenticationController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AuthenticationController.class);
+
+    private static final SecretKey SECRET_KEY = Keys.hmacShaKeyFor("secretkeysecretkeysecretkeysecretkey".getBytes());
 
     /**
      * GET /authenticate - Authenticates user using Basic Auth header and returns a JWT token.
@@ -76,7 +80,7 @@ public class AuthenticationController {
      * - Subject: the username
      * - Issued at: current time
      * - Expiration: 20 minutes from now
-     * - Signed with: HS256 algorithm using "secretkey"
+     * - Signed with: HS256 algorithm
      *
      * @param user the username to create the token for
      * @return the compact JWT string
@@ -84,14 +88,14 @@ public class AuthenticationController {
     private String generateJwt(String user) {
         LOGGER.info("START");
 
-        JwtBuilder builder = Jwts.builder();
-        builder.setSubject(user);
-        // Set the token issue time as current time
-        builder.setIssuedAt(new Date());
-        // Set the token expiry as 20 minutes from now
-        builder.setExpiration(new Date((new Date()).getTime() + 1200000));
-        builder.signWith(SignatureAlgorithm.HS256, "secretkey");
-        String token = builder.compact();
+        String token = Jwts.builder()
+                .setSubject(user)
+                // Set the token issue time as current time
+                .setIssuedAt(new Date())
+                // Set the token expiry as 20 minutes from now
+                .setExpiration(new Date((new Date()).getTime() + 1200000))
+                .signWith(SECRET_KEY, SignatureAlgorithm.HS256)
+                .compact();
 
         LOGGER.debug("Generated JWT: {}", token);
         LOGGER.info("END");
