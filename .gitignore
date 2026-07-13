@@ -44,3 +44,6 @@ buildNumber.properties
 .vscode/
 .DS_Store
 Thumbs.db
+
+# Node / React
+node_modules/
