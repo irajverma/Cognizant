@@ -1,18 +1,17 @@
 {
-  "name": "week-5-solutions",
+  "name": "week-6-solutions",
   "version": "1.0.0",
   "private": true,
   "workspaces": [
-    "myfirstreact",
-    "StudentApp",
-    "scorecalculatorapp",
-    "blogapp",
-    "cohortdetailsapp",
-    "TrainersApp",
-    "shoppingapp",
-    "counterapp",
-    "cricketapp",
-    "officespacerentalapp"
+    "eventexamplesapp",
+    "ticketbookingapp",
+    "bloggerapp",
+    "employeeapp",
+    "ticketraisingapp",
+    "mailregisterapp",
+    "fetchuserapp",
+    "cohortstestapp",
+    "gitclientapp"
   ],
   "dependencies": {
     "react": "^17.0.2",
